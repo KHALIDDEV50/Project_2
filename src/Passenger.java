@@ -2,8 +2,8 @@ abstract class Passenger  {
 
     private String name;
     private String id;
-    private Car reservedCar;
-    private double tripCost;
+    public Car reservedCar;
+    public double tripCost;
 
     // Constructor..
 
@@ -16,6 +16,40 @@ abstract class Passenger  {
         this.id = id;
     }
 
+    // get and set
+
+
+    public double getTripCost() {
+        return tripCost;
+    }
+
+    public void setTripCost(double tripCost) {
+        this.tripCost = tripCost;
+    }
+
+    public Car getReservedCar() {
+        return reservedCar;
+    }
+
+    public void setReservedCar(Car reservedCar) {
+        this.reservedCar = reservedCar;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     // Methods..
     public abstract void reserveCar(Car car) throws Exception;
@@ -29,5 +63,6 @@ abstract class Passenger  {
             System.out.println("Final Trip Cost: $" + tripCost);
         }
     }
+
 
 }
