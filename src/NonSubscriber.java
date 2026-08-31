@@ -2,24 +2,18 @@ public class NonSubscriber extends Passenger {
 
     private boolean discountCoupon;
 
-
     // Constructor
-    public NonSubscriber() {
-
-    }
-
     public NonSubscriber(String name, String id, boolean discountCoupon) {
         super(name, id);
         this.discountCoupon = discountCoupon;
     }
 
-    // get and set
-
-
+    // Getter
     public boolean isDiscountCoupon() {
         return discountCoupon;
     }
 
+    // Setter
     public void setDiscountCoupon(boolean discountCoupon) {
         this.discountCoupon = discountCoupon;
     }
@@ -27,19 +21,28 @@ public class NonSubscriber extends Passenger {
     @Override
     public void reserveCar(Car car) throws Exception {
 
-        // التحقق من السعة القصوى للسيارة
+        // Check capacity
         if (car.getMaxCapacity() == 0) {
-            throw new Exception("Reservation Failed! Car " + car.getCode() + " has zero capacity.");
+            throw new Exception(
+                    "Reservation Failed! Car "
+                            + car.getCode()
+                            + " has zero capacity."
+            );
         }
 
-        this.reservedCar = car;
-        // إذا كان لديه كوبون يخصم 10%، وإلا يدفع السعر كاملاً
+        // Reserve car
+        setReservedCar(car);
+
+        double price = car.getFixedRoute().getPrice();
+
+        // Check coupon
         if (discountCoupon) {
-            this.tripCost = car.getFixedRoute().getPrice() - (car.getFixedRoute().getPrice() * 0.1);
+
+            setTripCost(price * 0.9);
+
         } else {
-            this.tripCost = car.getFixedRoute().getPrice();
+
+            setTripCost(price);
         }
     }
-
 }
-

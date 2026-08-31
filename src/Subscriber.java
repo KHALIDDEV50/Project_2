@@ -1,22 +1,28 @@
 public class Subscriber extends Passenger {
 
-
     // Constructor
-    public Subscriber(String name, String id, double tripCost) {
+    public Subscriber(String name, String id) {
         super(name, id);
     }
 
-    // Methods
     @Override
     public void reserveCar(Car car) throws Exception {
-        // Chek capacity car
+
+        // Check capacity
         if (car.getMaxCapacity() == 0) {
-            throw new Exception("Reservation Failed! Car " + car.getCode() + " has zero capacity.");
+            throw new Exception(
+                    "Reservation Failed! Car "
+                            + car.getCode()
+                            + " has zero capacity."
+            );
         }
 
-        this.reservedCar = car;
+        // Reserve car
+        setReservedCar(car);
 
-        this.tripCost = car.getFixedRoute().getPrice() * 0.5;
+        // 50% discount
+        double price = car.getFixedRoute().getPrice();
+
+        setTripCost(price * 0.5);
     }
-
 }

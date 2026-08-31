@@ -1,20 +1,17 @@
-public class Car  {
+public class Car {
+
     private String code;
     private Route fixedRoute;
     private int maxCapacity;
 
     // Constructor
-
-    public Car(){
-
-    }
-
-    public  Car(String code, Route fixedRoute , int maxCapacity){
+    public Car(String code, Route fixedRoute, int maxCapacity) {
         this.code = code;
         this.fixedRoute = fixedRoute;
-        this.maxCapacity =maxCapacity;
+        this.maxCapacity = maxCapacity;
     }
 
+    // Getters and Setters
     public String getCode() {
         return code;
     }
